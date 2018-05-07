@@ -56,17 +56,16 @@ class DropdownWithAdd extends Component {
             <div className="dropdown-wrap">
                 <div className="dropdown">
                     <div className="drop-down-instigator" onClick={this.showDropdown}>
-                        <div className='placeholder'>{this.placeholder}</div>
+                        <div className={this.state.value || this.state.show?'placeholderSmall':'placeholder'}>{this.placeholder}</div>
                         { this.state.value ? this.state.value : this.state.show && <input type="text" autoFocus={true} onKeyPress={this.handleKeyPress} onChange={this.handleKeyPress} /> }
                     </div>
                     {this.state.value && <div className="remove-btn" onClick={this.reset}>
-                        <object data={cancel} type="image/svg+xml">
                             <img src={cancel} alt="Remove"/>
-                        </object>
                     </div>}
 
                     {this.state.show && <div className="drop-down">
                         <ul className="country-list">
+                            <li className={'drop-down-option'} style={{ marginTop: 12 }}> {this.state.options.length} items in the list</li>
                             {this.renderDropdownOptions(this.state.options)}
                         </ul>
                     </div> }
